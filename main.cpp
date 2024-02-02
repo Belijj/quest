@@ -38,7 +38,14 @@ public:
 
 class Checkout : public Cart, public User {
 public:
-    // Inherit address and card from User, and all other details from Cart
+      void displayCheckoutInfo() const {
+        cout << "User Information:" << endl;
+        cout << "Login: " << login << " - Name: " << name << " - Address: " << address << endl;
+
+        cout << "\nCart Information:" << endl;
+        displayCartItem();
+
+}
 };
 
 User authenticateUser() {
@@ -143,6 +150,6 @@ int main() {
     cout << "User Information:" << endl;
     cout << "Name: " << user.name << endl;
     cout << "Address: " << user.address << endl;
-
+    checkoutInstance.displayCheckoutInfo();
     return 0;
-}
+}                                                                                                                                                                              
