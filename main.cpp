@@ -41,6 +41,23 @@ public:
     // Inherit address and card from User, and all other details from Cart
 };
 
+User authenticateUser() {
+    User user;
+    cout << "Enter your login: ";
+    cin >> user.login;
+
+    cout << "Enter your password: ";
+    cin >> user.passwd;
+
+    // Simulated authentication (in a real application, you'd validate against a database)
+    if (user.login != "example" || user.passwd != "password") {
+        cout << "Invalid login credentials. Exiting program." << endl;
+        exit(1);
+    }
+
+    return user;
+}
+
 void displayClothesMenu(const vector<Clothes>& clothesMenu) {
     cout << "===== Clothes Menu =====" << endl;
     for (const Clothes& item : clothesMenu) {
@@ -69,6 +86,9 @@ void displayCart(const vector<Cart>& cart) {
 }
 
 int main() {
+    // Simulated login
+    User user = authenticateUser();
+
     vector<Clothes> clothesMenu = {
         {"Red", "Nike", "Hoodie", "M", 40},
         {"Blue", "Adidas", "T-Shirt", "L", 25},
@@ -82,8 +102,8 @@ int main() {
 
     vector<Cart> shoppingCart;
     Checkout checkout;
-
-    cout << "Welcome to the Clothing Shop!" << endl;
+    
+    cout << "Welcome, " << user.name << "! You are now logged in." << endl;
 
     while (true) {
         displayClothesMenu(clothesMenu);
@@ -110,26 +130,12 @@ int main() {
 
     displayCart(shoppingCart);
 
-    cout << "Enter your login: ";
-    cin >> checkout.login;
-
-    cout << "Enter your password: ";
-    cin >> checkout.passwd;
-
-    cout << "Enter your name: ";
-    cin.ignore();  // Clear the input buffer
-    getline(cin, checkout.name);
-
-    cout << "Enter your address: ";
-    getline(cin, checkout.address);
-
     // Display checkout details
     cout << "\n===== Checkout Details =====" << endl;
     displayCart(shoppingCart);
     cout << "User Information:" << endl;
-    cout << "Name: " << checkout.name << endl;
-    cout << "Address: " << checkout.address << endl;
+    cout << "Name: " << user.name << endl;
+    cout << "Address: " << user.address << endl;
 
     return 0;
 }
-
