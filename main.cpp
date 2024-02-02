@@ -102,7 +102,7 @@ int main() {
 
     vector<Cart> shoppingCart;
     Checkout checkout;
-    
+
     cout << "Welcome, " << user.name << "! You are now logged in." << endl;
 
     while (true) {
@@ -129,6 +129,13 @@ int main() {
     }
 
     displayCart(shoppingCart);
+
+    cout << "Enter your name: ";
+    cin.ignore();  // Clear the input buffer
+    getline(cin, user.name);
+
+    cout << "Enter your address: ";
+    getline(cin, user.address);
 
     // Display checkout details
     cout << "\n===== Checkout Details =====" << endl;
