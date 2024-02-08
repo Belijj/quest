@@ -5,9 +5,10 @@
 using namespace std;
 
 class User {
-public:
+private:
     string login;
     string passwd;
+public:
     string name;
     string address;
 };
