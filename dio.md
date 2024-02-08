@@ -24,22 +24,8 @@ classDiagram
    string clothes
    int price
  }
- hoodie<|-- clothes
-  t-shirt<|-- clothes
-   shirts<|-- clothes
-    pants<|-- clothes
-     socks<|-- clothes
-      underwear<|-- clothes
-      hats<|-- clothes
-cart <|-- User
- cart<|-- hoodie
-  cart<|-- t-shirt
-   cart<|-- shirts
-    cart<|-- pants
-     cart<|-- socks
-      cart<|-- clothes
-      cart<|-- hats
-
+cart <--clothes
+checkout <-- User
 
 class checkout{
    "inherit adress,\ncard from user, all other from cart"
